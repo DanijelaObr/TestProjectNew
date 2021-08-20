@@ -1,3 +1,5 @@
+import { ICity } from "./city";
+
 const request = require('request-promise-native');
 
 export class CityWeatherData {
@@ -18,6 +20,7 @@ export class CityWeatherData {
     async  getData() {
 
       const key: string = '4ab6375a6e03c10b5e0855e8f4741916';
+      let arrayCity: ICity[] = [];
       for (let i = 0; i < 10; i++) {
 
         const lat: Number = this.getRandomInt(this.minLat, this.maxLat);
@@ -32,8 +35,9 @@ export class CityWeatherData {
              ,json: true
            }
            const response = await request(options)
-           console.log(response)
-           
+           arrayCity[i] = response;
+          //  console.log(response)
+          //  return response;
            
          }
    
@@ -41,6 +45,7 @@ export class CityWeatherData {
          console.log( error)
        }
         
-      }    
+      }
+      //console.log(arrayCity);    
   }
 }

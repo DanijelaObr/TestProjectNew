@@ -1,8 +1,8 @@
-import {ICoord, IWeather, IBase, IMain,IVisibility, IWind, IClouds, IDt, ISys, ITimezone, IId, IName, ICod} from './objects';
+import {ICoord, IWeather, IBase, IMain,IVisibility, IWind, IClouds, IDt, ISys, ITimezone, IId, IName, ICod} from './arrObjects';
 
 export interface ICity{
     coord: ICoord;
-    weather: IWeather;
+    weather: IWeather[];
     base: IBase;
     main: IMain;
     visibility: IVisibility;

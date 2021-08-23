@@ -1,4 +1,4 @@
-import { ICity } from "./city";
+import { ICity } from "./cityInterface";
 
 const request = require('request-promise-native');
 
@@ -35,9 +35,9 @@ export class CityWeatherData {
              ,json: true
            }
            const response = await request(options)
-           arrayCity[i] = response;
-          //  console.log(response)
-          //  return response;
+           //arrayCity[i] = response;
+           arrayCity.push(response);
+          
            
          }
    
@@ -46,6 +46,7 @@ export class CityWeatherData {
        }
         
       }
-      //console.log(arrayCity);    
+      //console.log(arrayCity);   
+      return arrayCity; 
   }
 }

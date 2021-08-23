@@ -35,6 +35,9 @@ import { IRole } from '../db/models/role/role';
 import { UserRepository } from '../repositories/user';
 
 import { CityWeatherData } from '../city-weather-data/city-weather-data';
+import { CityRepository } from '../repositories/city';
+
+
 
 const fileStreamRotator = require('file-stream-rotator');
 const busboy = require('connect-busboy');
@@ -55,6 +58,8 @@ export class Server {
 
   public systemUserId: string;
 
+
+
   constructor() {
     this.initFolderPaths();
 
@@ -66,6 +71,7 @@ export class Server {
   static async bootstrap() {
     const server = new Server();
     const weatherData = new CityWeatherData();
+    
 
     await server.initDatabase();
 
@@ -258,4 +264,6 @@ export class Server {
       });
     }
   }
+
+
 }

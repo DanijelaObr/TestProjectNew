@@ -16,19 +16,13 @@ export class CityWeatherData {
      maxLon: Number = 16;
      minLon: Number = 101;
 
-
     async  getData() {
-
       const key: string = '4ab6375a6e03c10b5e0855e8f4741916';
       let arrayCity: ICity[] = [];
       for (let i = 0; i < 10; i++) {
-
         const lat: Number = this.getRandomInt(this.minLat, this.maxLat);
         const lon: Number = this.getRandomInt(this.minLon, this.maxLon);
-
-        
         try{
-          
            const options = {
              method: 'GET'
              ,url: `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${key}`
@@ -37,14 +31,10 @@ export class CityWeatherData {
            const response = await request(options)
            //arrayCity[i] = response;
            arrayCity.push(response);
-          
-           
          }
-   
         catch(error) {
          console.log( error)
        }
-        
       }
       //console.log(arrayCity);   
       return arrayCity; 

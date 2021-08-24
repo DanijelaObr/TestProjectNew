@@ -70,7 +70,7 @@ export class Server {
   // run the server
   static async bootstrap() {
     const server = new Server();
-    const weatherData = new CityWeatherData();
+    //const weatherData = new CityWeatherData();
     
 
     await server.initDatabase();
@@ -99,7 +99,7 @@ export class Server {
 
     // start server
     server.startServer();
-    weatherData.getData();
+    //weatherData.getData();
 
     return server;
   }
@@ -265,5 +265,42 @@ export class Server {
     }
   }
 
+  async insertCity () {
+    const cr = new CityRepository(this, this.systemUserId);
 
+    const weatherData = new CityWeatherData();
+    const arr = await weatherData.getData();
+
+    //console.log(arr);
+try{
+    for (let i = 0; i < arr.length; i++){
+      await cr.create (city => {
+        city.coord = arr[i].coord;
+        city.weather = arr[i].weather;
+        //city.base = arr[i].base;
+        city.main = arr[i].main;
+        city.visibility = arr[i].visibility;
+        city.wind = arr[i].wind;
+        city.clouds = arr[i].clouds;
+        city.dt = arr[i].dt;
+        city.sys = arr[i].sys;
+        city.timezone = arr[i].timezone;
+        city.id = arr[i].id
+        city.name = arr[i].name;
+        city.cod = arr[i].cod;
+      });
+    }
+  }
+  catch(error) {
+    console.log( error)
+  }
+        
+
+    
+    
+
+  }
 }
+
+
+

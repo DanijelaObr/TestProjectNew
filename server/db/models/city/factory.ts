@@ -10,17 +10,16 @@ export class CityFactory extends Factory<ICity> {
       connection: connection,
       name: 'City',
       definition: CitySchema,
-      indexes: [
+
+      indexes:[
         {
-          fields: {
-            'name': [], //we need it for search?
-            'deletedAt': 1
-          },
-          options: {
-            'unique': true
-          }
+          fields: {'id': 1 },
+          options: { 'unique': true }
         }
       ]
+      
     });
+
+
   }
 }

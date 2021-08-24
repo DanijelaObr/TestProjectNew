@@ -13,7 +13,7 @@ export interface ICity extends IIdentifier, ISoftDelete, IAuditInfo {
     wind: IWind;
     clouds: IClouds;
     dt: IDt;
-    sys: ISys;
+    sys?: ISys;
     timezone: ITimezone;
     id: IId;
     name: IName;

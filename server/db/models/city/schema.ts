@@ -5,32 +5,18 @@ import { SchemaDefinition } from 'mongoose';
 import { BaseSchemaDefinition } from '../../../core/db/base';
 
 export const CitySchema: SchemaDefinition = {
-
     coord: {
         lon: Number,
         lat: Number
     },
-
-    weather: [{
- 
-    
+    weather: {
         id: Number,
         main: String,
         description: String,
         icon: String
-     
-   
-   }],
-
-   base: {
- 
-    base: String,
- 
- },
-
+   },
+   base: String,
   main: {
- 
-   
     temp: Number,
     feels_like: Number,
     temp_min: Number,
@@ -39,69 +25,25 @@ export const CitySchema: SchemaDefinition = {
     humidity: Number,
     sea_level:Number,
     grnd_level: Number
- 
-
 },
-
-visibility: {
-
 visibility: Number,
-
-},
-
 wind: {
-
-speed: Number, deg: Number, gust: Number
-
+speed: Number, 
+deg: Number, 
+gust: Number
 },
-
 clouds: {
-
 all: Number
-
 },
-
-dt: {
-
-dt: String
-
-},
-
+dt: String,
 sys: {
-
+country: String,
 sunrise: String,
 sunset: String
-
 },
-
-timezone: {
-
-timezone: Number
-
-},
-
-id: {
-
-id: Number
-
-},
-
-name: {
-
-name: String
-
-},
-
-cod: {
-
-cod: Number
-
-},
-
-
+timezone: Number,
+id: Number,
+name:String,
+cod: Number,
   ...BaseSchemaDefinition
 };
-
-
-
-

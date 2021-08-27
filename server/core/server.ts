@@ -274,9 +274,8 @@ export class Server {
     //console.log(arr);
 try{
   const dbCities = await cr.query();
-   if (dbCities.length >= 10)
-   return;
-   else{
+   if (dbCities.length < 10)
+   {
     for (const grad of arr){
       await cr.create (city => {
         city.coord = grad.coord;

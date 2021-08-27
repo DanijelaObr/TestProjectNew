@@ -5,13 +5,12 @@ export interface ICoord {
 
 
 export interface IWeather {
-     weather: 
-     {
+     
      id: number;
      main: string;
      description: string;
      icon: string;
-   };
+   
 }
 export interface IBase {
    base: string;

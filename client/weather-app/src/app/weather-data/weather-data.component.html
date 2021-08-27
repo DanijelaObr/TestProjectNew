@@ -7,7 +7,7 @@
     <tr *ngFor="let city of cities; index as i">
         <td>{{ city.name }}</td>
         <td>{{ city.weather[0].main }}</td>
-      <td>{{ (city.main.temp - 273.15).toFixed(2)}}</td>
+        <td>{{ (city.main.temp - 273.15).toFixed(2)}}</td>
     </tr>
   </table>
 

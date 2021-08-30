@@ -14,4 +14,5 @@ export interface ICity{
     id: IId;
     name: IName;
     cod: ICod;
+    visible: boolean;
 }

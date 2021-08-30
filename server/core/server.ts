@@ -273,27 +273,26 @@ export class Server {
 
     //console.log(arr);
 try{
-  const dbCities = await cr.query();
-   if (dbCities.length < 10)
+  var dbCities = await cr.query();
+  var i = 10 - dbCities.length;
+   for (; i > 0; i--)
    {
-    for (const grad of arr){
       await cr.create (city => {
-        city.coord = grad.coord;
-        city.weather = grad.weather;
-        //city.base = grad.base;
-        city.main = grad.main;
-        city.visibility = grad.visibility;
-        city.wind = grad.wind;
-        city.clouds = grad.clouds;
-        city.dt = grad.dt;
-        city.sys = grad.sys;
-        city.timezone = grad.timezone;
-        city.id = grad.id
-        city.name = grad.name;
-        city.cod = grad.cod;
-      });
+        city.coord = arr[i].coord;
+        city.weather = arr[i].weather;
+        //city.base = arr[i].base;
+        city.main = arr[i].main;
+        city.visibility = arr[i].visibility;
+        city.wind = arr[i].wind;
+        city.clouds = arr[i].clouds;
+        city.dt = arr[i].dt;
+        city.sys = arr[i].sys;
+        city.timezone = arr[i].timezone;
+        city.id = arr[i].id
+        city.name = arr[i].name;
+        city.cod = arr[i].cod;
+      }); 
     }
-  }
 }
   catch(error) {
     console.log( error)

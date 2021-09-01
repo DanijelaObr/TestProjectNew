@@ -70,7 +70,7 @@ export class Server {
   // run the server
   static async bootstrap() {
     const server = new Server();
-    //const weatherData = new CityWeatherData();
+    const weatherData = new CityWeatherData();
     
 
     await server.initDatabase();
@@ -100,6 +100,8 @@ export class Server {
     // start server
     server.startServer();
     await server.insertCity();
+    weatherData.getCityByName('Moscow');
+
 
     return server;
   }
@@ -269,28 +271,28 @@ export class Server {
     const cr = new CityRepository(this, this.systemUserId);
 
     const weatherData = new CityWeatherData();
-    const arr = await weatherData.getData();
+    const cities = await weatherData.getData();
 
     //console.log(arr);
 try{
-  var dbCities = await cr.query();
-  var i = 10 - dbCities.length;
-   for (; i > 0; i--)
+  const dbCities = await cr.query();
+  const timesToInsert = 10 - dbCities.length;
+   for (let i = 0; i < timesToInsert; i++)
    {
       await cr.create (city => {
-        city.coord = arr[i].coord;
-        city.weather = arr[i].weather;
-        //city.base = arr[i].base;
-        city.main = arr[i].main;
-        city.visibility = arr[i].visibility;
-        city.wind = arr[i].wind;
-        city.clouds = arr[i].clouds;
-        city.dt = arr[i].dt;
-        city.sys = arr[i].sys;
-        city.timezone = arr[i].timezone;
-        city.id = arr[i].id
-        city.name = arr[i].name;
-        city.cod = arr[i].cod;
+        city.coord = cities[i].coord;
+        city.weather = cities[i].weather;
+        //city.base = cities[i].base;
+        city.main = cities[i].main;
+        city.visibility = cities[i].visibility;
+        city.wind = cities[i].wind;
+        city.clouds = cities[i].clouds;
+        city.dt = cities[i].dt;
+        city.sys = cities[i].sys;
+        city.timezone = cities[i].timezone;
+        city.id = cities[i].id
+        city.name = cities[i].name;
+        city.cod = cities[i].cod;
       }); 
     }
 }

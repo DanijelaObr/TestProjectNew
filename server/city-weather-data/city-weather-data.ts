@@ -1,3 +1,4 @@
+//import { response } from "express";
 import { ICity } from "./cityInterface";
 
 const request = require('request-promise-native');
@@ -39,4 +40,24 @@ export class CityWeatherData {
       //console.log(arrayCity);   
       return arrayCity; 
   }
+
+  async  getCityByName(name:String) {
+    const key: string = '4ab6375a6e03c10b5e0855e8f4741916';
+      try{
+         const options = {
+           method: 'GET'
+           ,url: `https://api.openweathermap.org/data/2.5/weather?q=${name}&appid=${key}`
+           ,json: true
+         }
+         const response = await request(options);
+         console.log(response);
+       }
+      catch(error) {
+       console.log( error)
+     }
+
+     
+    }
+     
 }
+

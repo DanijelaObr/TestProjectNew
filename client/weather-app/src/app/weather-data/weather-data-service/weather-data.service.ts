@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { City } from 'src/app/city';
 import { ICity } from '../cityInterface';
 
 
@@ -16,5 +17,9 @@ export class WeatherDataService {
 
   getCities(): Observable<ICity[]> {
     return this.http.get<ICity[]>(this.citiesWeatherDataUrl);
+  }
+
+  addCity(city: City) {
+    this.http.post<City>(this.citiesWeatherDataUrl, city);
   }
 }

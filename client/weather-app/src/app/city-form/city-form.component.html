@@ -1,0 +1,26 @@
+<div class="row">
+    <div class="col-xs-12">
+        <form (ngSubmit)="onSubmit()">
+            <div class="form-group">
+                <label for="cityName">City Name</label>
+                <input type="text"
+                id="cityName"
+                class="form-control"
+                ngModel name="cityName">
+            </div>
+            
+
+            <div class="form-group">
+                <label for="temperature">Temperature</label>
+                <input type="text"
+                id="temperature"
+                class="form-control"
+                ngModel name="temperature">
+            </div>
+            <button
+          class="btn btn-primary"
+          type="submit"
+          >Submit</button>
+        </form>
+    </div>
+</div>

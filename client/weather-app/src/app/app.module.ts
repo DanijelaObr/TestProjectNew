@@ -8,21 +8,29 @@ import { WeatherDataComponent } from './weather-data/weather-data.component';
 import { WeatherDataService } from './weather-data/weather-data-service/weather-data.service';
 import { CityFormComponent } from './city-form/city-form.component';
 import { FormsModule, NgForm } from '@angular/forms';
+import { City } from './city';
+
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    WeatherDataComponent
+    WeatherDataComponent,
+    CityFormComponent
    
     
   ],
   imports: [
     BrowserModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [WeatherDataService, HttpClient],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+
+  
+  
+}

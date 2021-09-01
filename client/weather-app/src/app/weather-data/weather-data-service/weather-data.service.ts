@@ -19,7 +19,10 @@ export class WeatherDataService {
     return this.http.get<ICity[]>(this.citiesWeatherDataUrl);
   }
 
-  addCity(city: City) {
-    this.http.post<City>(this.citiesWeatherDataUrl, city);
+  addCity(city: City): Observable<City> {
+    return this.http.post<City>(this.citiesWeatherDataUrl, city);
+    console.log(city);
   }
+
+  
 }

@@ -18,7 +18,8 @@ export class CityRouter extends Router {
 
   initRoutes() {
     this.router.route('/')
-      .get(this.queryAll.bind(this));
+      .get(this.queryAll.bind(this))
+      .post(this.createCity.bind(this));
 
   }
 
@@ -34,5 +35,29 @@ export class CityRouter extends Router {
       next(Router.handleError(error, request, response));
     }
   }
+
+  async createCity(request: IRequest, response: IResponse, next: NextFunction) {
+    try {
+      const userId = this.getUserId(request);
+      const cr = new CityRepository(this.server, userId);
+      const city = request.body;
+      console.log(city);
+
+      await cr.create(grad => {
+        grad.name = city.name;
+        grad.main.temp = city.temperature;
+      });
+
+    //response.data = await cr.query();
+    
+      next();
+    } catch (error) {
+      next(Router.handleError(error, request, response));
+    }
+  }
+
 }
+
+
+
 

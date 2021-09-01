@@ -70,7 +70,9 @@ export class Server {
   // run the server
   static async bootstrap() {
     const server = new Server();
-    const weatherData = new CityWeatherData();
+    //const weatherData = new CityWeatherData();
+
+
     
 
     await server.initDatabase();
@@ -100,7 +102,8 @@ export class Server {
     // start server
     server.startServer();
     await server.insertCity();
-    weatherData.getCityByName('Moscow');
+    
+    //weatherData.getCityByName('Moscow');
 
 
     return server;

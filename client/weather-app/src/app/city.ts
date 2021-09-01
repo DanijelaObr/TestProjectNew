@@ -1,4 +1,10 @@
 export class City{
 
-    constructor(public name: string, public temperature: number){}
+    name: string;
+    temperature: number;
+
+    constructor(public nameCity: string, public temperatureCity: number){
+        this.name = nameCity;
+        this.temperature = temperatureCity;
+    }
 }

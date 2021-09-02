@@ -13,8 +13,8 @@ export class CityFactory extends Factory<ICity> {
 
       indexes:[
         {
-          fields: {'id': 1 },
-          options: { 'unique': true }
+          fields: {'name': 1 },
+          options: { 'unique': false }
         }
       ]
       

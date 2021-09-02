@@ -1,12 +1,13 @@
 <div class="row">
     <div class="col-xs-12">
-        <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+        <form (ngSubmit)="onSubmit(f.value)" #f="ngForm">
             <div class="form-group">
                 <label for="cityName">City Name</label>
                 <input type="text"
                 id="cityName"
                 class="form-control"
-                ngModel name="cityName">
+                ngModel 
+                name="cityName">
             </div>
             
 
@@ -15,7 +16,8 @@
                 <input type="number"
                 id="temperature"
                 class="form-control"
-                ngModel name="temperature">
+                ngModel 
+                name="temperature">
             </div>
             <button
           class="btn btn-primary"

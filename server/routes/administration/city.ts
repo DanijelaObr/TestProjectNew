@@ -21,6 +21,9 @@ export class CityRouter extends Router {
       .get(this.queryAll.bind(this))
       .post(this.createCity.bind(this));
 
+
+
+
   }
 
   async queryAll(request: IRequest, response: IResponse, next: NextFunction) {
@@ -43,18 +46,19 @@ export class CityRouter extends Router {
       const city = request.body;
       console.log(city);
 
-      await cr.create(grad => {
-        grad.name = city.name;
+      const created = await cr.create(grad => {
+        grad.name = city.cityName;
         grad.main.temp = city.temperature;
       });
 
-    //response.data = await cr.query();
+    response.data = await cr.getOne({ '_id': created._id });
     
       next();
     } catch (error) {
       next(Router.handleError(error, request, response));
     }
   }
+
 
 }
 

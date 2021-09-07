@@ -37,6 +37,8 @@ import { UserRepository } from '../repositories/user';
 import { CityWeatherData } from '../city-weather-data/city-weather-data';
 import { CityRepository } from '../repositories/city';
 
+import * as cron from 'node-cron';
+
 
 
 const fileStreamRotator = require('file-stream-rotator');
@@ -101,11 +103,12 @@ export class Server {
 
     // start server
     server.startServer();
+    server.initRefreshCityCronJob();
     await server.insertCity();
     
     //weatherData.getCityByName('Moscow');
-
-
+    
+   
     return server;
   }
 
@@ -270,8 +273,10 @@ export class Server {
     }
   }
 
-  async insertCity () {
+async insertCity () {
     const cr = new CityRepository(this, this.systemUserId);
+
+  
 
     const weatherData = new CityWeatherData();
     const cities = await weatherData.getData();
@@ -303,6 +308,45 @@ try{
     console.log( error)
     }
   }
+
+
+  async updateCity () {
+    const cr = new CityRepository(this, this.systemUserId);
+
+    const weatherData = new CityWeatherData();
+    const dbCities = await cr.query();
+    //console.log(arr);
+try{
+   for (const city of dbCities)
+   {
+    const newData =  await weatherData.getCityById(city.id);
+    await cr.update(city._id.toString(), updatedCity => {
+      updatedCity.weather = newData.weather;
+      updatedCity.main = newData.main;
+      updatedCity.wind = newData.wind;
+      updatedCity.clouds = newData.clouds;
+      
+    }); 
+    }
+}
+  catch(error) {
+    console.log( error)
+    }
+  }
+
+  initRefreshCityCronJob() {
+
+    cron.schedule(`2 * * * *`, async () => {
+      try {
+        console.log("cron radi")
+        await this.updateCity();
+      } catch (error) {
+        Logger.error(error);
+      }
+    });
+  }
+ 
+
 }
 
 

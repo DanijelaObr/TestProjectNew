@@ -1,4 +1,4 @@
-import {ICoord, IWeather, IBase, IMain,IVisibility, IWind, IClouds, IDt, ISys, ITimezone, IId, IName, ICod} from './arrObjects';
+import {ICoord, IWeather, IBase, IMain,IVisibility, IWind, IClouds, IDt, ISys, ITimezone, IId,  ICod} from './arrObjects';
 
 export interface ICity{
     coord: ICoord;
@@ -12,6 +12,7 @@ export interface ICity{
     sys: ISys;
     timezone: ITimezone;
     id: IId;
-    name: IName;
+    name: string;
     cod: ICod;
+    cityExists: boolean;
 }

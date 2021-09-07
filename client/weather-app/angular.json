@@ -28,10 +28,12 @@
             "inlineStyleLanguage": "scss",
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              "src/app/ematic-core-ui/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              "src/app/ematic-core-ui/scss/main.scss"
             ],
             "scripts": []
           },

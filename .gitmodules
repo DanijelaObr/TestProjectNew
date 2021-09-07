@@ -1,0 +1,6 @@
+[submodule "client/weather-app/client/weather-app/src/app/ematic-core-ui"]
+	path = client/weather-app/client/weather-app/src/app/ematic-core-ui
+	url = https://derpberp123@bitbucket.org/ematicsolutions/ematic-core-ui.git
+[submodule "client/weather-app/src/app/ematic-core-ui"]
+	path = client/weather-app/src/app/ematic-core-ui
+	url = https://derpberp123@bitbucket.org/ematicsolutions/ematic-core-ui.git

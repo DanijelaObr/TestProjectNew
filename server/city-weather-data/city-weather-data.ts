@@ -41,7 +41,7 @@ export class CityWeatherData {
       return arrayCity; 
   }
 
-  async  getCityByName(name:String) {
+  async  getCityByName(name: any): Promise<ICity> {
     const key: string = '4ab6375a6e03c10b5e0855e8f4741916';
       try{
          const options = {
@@ -50,14 +50,36 @@ export class CityWeatherData {
            ,json: true
          }
          const response = await request(options);
-         console.log(response);
+         //console.log(response);
+         return response;
        }
       catch(error) {
-       console.log( error)
+        return error;
+       //console.log( error)
      }
 
      
     }
+
+    async  getCityById(id: any): Promise<ICity> {
+      const key: string = '4ab6375a6e03c10b5e0855e8f4741916';
+        try{
+           const options = {
+             method: 'GET'
+             ,url: `https://api.openweathermap.org/data/2.5/weather?id=${id}&appid=${key}`
+             ,json: true
+           }
+           const response = await request(options);
+           //console.log(response);
+           return response;
+         }
+        catch(error) {
+          return error;
+         //console.log( error)
+       }
+  
+       
+      }
      
 }
 

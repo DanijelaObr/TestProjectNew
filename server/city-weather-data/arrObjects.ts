@@ -61,11 +61,11 @@ export interface IId {
 
 }
 
-export interface IName {
+// export interface IName {
 
-   name: string;
+//    name: string;
 
-}
+// }
 
 export interface ICod {
 

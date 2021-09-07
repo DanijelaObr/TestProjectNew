@@ -13,7 +13,7 @@
       <div clas=”row”><b>Min temperature (°C): </b>{{ (city.main.temp_min - 273.15).toFixed(2) }} </div>
       <div clas=”row”><b>Wind speed: </b>{{ city.wind.speed }} </div>
   </div>
-  <td>{{ city.weather[0].main }}</td>
+   <td>{{ city?.weather[0].main }}</td> 
   <td>{{ (city.main.temp - 273.15).toFixed(2) }}</td>
   </tr>
 </table>
